@@ -11,6 +11,6 @@ app
   .use(cors())
   .use(bodyParser())
   .use(auth())
-  .use('/api', createProxyMiddleware({ target: target, changeOrigin: true }));
+  .use('/', createProxyMiddleware({ target: target, changeOrigin: true }));
 
 app.listen(port);
