@@ -2,6 +2,9 @@ const { createHash, validHash } = require('../libs/hash');
 
 module.exports = () => {
   return async (req, res, next) => {
+    const authen = process.env.AUTHEN === 'true';
+    if (!authen) return await next();
+    
     const { client_key = '' } = req.headers || {};
     const body = req.body || {};
     const hash = createHash(body);
